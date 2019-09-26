@@ -68,7 +68,8 @@ class Modality_TRAINING_PET_CT(object):
                 self.PREPROCESS_normalize()
 
             if resample:
-                self.PREPROCESS_resample(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
+                self.PREPROCESS_resample_CT_to_TEP()
+                self.PREPROCESS_resample_TEPCT_to_CNN(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
 
             # save preprocess data
             new_PET_id = path_output+'/'+splitext(basename(data_set_id[0]))[0]+'.nii'
@@ -96,11 +97,26 @@ class Modality_TRAINING_PET_CT(object):
         self.CT_img = sitk.ShiftScale(self.CT_img,shift=1000, scale=1./2000.)
         # normalization MASK
         self.MASK_img = sitk.Threshold(self.MASK_img, lower=0.0, upper=1.0, outsideValue=1.0)
+        return None
     
-    def PREPROCESS_resample(self,new_shape,new_spacing):
+    def PREPROCESS_resample_CT_to_TEP(self):
         """ called by PREPROCESS """
         
-        # TODO : SetOutputOrigin do not reposition images as expected, need to develop a better rescaling function
+        # transformation parametrisation
+        transformation = sitk.ResampleImageFilter() 
+        transformation.SetOutputDirection(self.PET_img.GetDirection())
+        transformation.SetOutputOrigin(self.PET_img.GetOrigin())
+        transformation.SetOutputSpacing(self.PET_img.GetSpacing())
+        transformation.SetSize(self.PET_img.GetSize())
+        transformation.SetInterpolator(sitk.sitkBSpline)
+
+        # apply transformations on CT IMG
+        self.CT_img = transformation.Execute(self.CT_img)
+        
+        return None
+    
+    def PREPROCESS_resample_TEPCT_to_CNN(self,new_shape,new_spacing):
+        """ called by PREPROCESS """
         
         # compute transformation parameters
         new_Origin = self.compute_new_Origin(new_shape,new_spacing)
@@ -122,6 +138,7 @@ class Modality_TRAINING_PET_CT(object):
         # apply transformations on MASK
         transformation.SetInterpolator(sitk.sitkNearestNeighbor)
         self.MASK_img = transformation.Execute(self.MASK_img)
+        return None
     
     def compute_new_Origin(self,new_shape,new_spacing):
         """ called by PREPROCESS_resample """
@@ -140,6 +157,7 @@ class Modality_TRAINING_PET_CT(object):
         sitk.WriteImage(self.PET_img,new_filenames[0])
         sitk.WriteImage(self.CT_img,new_filenames[1])
         sitk.WriteImage(self.MASK_img,new_filenames[2])
+        return None
     
     ####################################################################################################
     
@@ -605,7 +623,8 @@ class Modality_PREDICTION_PET_CT(object):
                 self.PREPROCESS_normalize()
 
             if resample:
-                self.PREPROCESS_resample(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
+                self.PREPROCESS_resample_CT_to_TEP()
+                self.PREPROCESS_resample_TEPCT_to_CNN(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
 
             # save preprocess data
             new_PET_id = path_output+'/'+splitext(basename(self.PET_id))[0]+'.nii'
@@ -629,10 +648,24 @@ class Modality_PREDICTION_PET_CT(object):
         # normalization CT
         self.CT_img = sitk.ShiftScale(self.CT_img,shift=1000, scale=1./2000.)
     
-    def PREPROCESS_resample(self,new_shape,new_spacing):
+    def PREPROCESS_resample_CT_to_TEP(self):
         """ called by PREPROCESS """
         
-        # TODO : SetOutputOrigin do not reposition images as expected, need to develop a better rescaling function
+        # transformation parametrisation
+        transformation = sitk.ResampleImageFilter() 
+        transformation.SetOutputDirection(self.PET_img.GetDirection())
+        transformation.SetOutputOrigin(self.PET_img.GetOrigin())
+        transformation.SetOutputSpacing(self.PET_img.GetSpacing())
+        transformation.SetSize(self.PET_img.GetSize())
+        transformation.SetInterpolator(sitk.sitkBSpline)
+
+        # apply transformations on CT IMG
+        self.CT_img = transformation.Execute(self.CT_img)
+        
+        return None
+    
+    def PREPROCESS_resample_TEPCT_to_CNN(self,new_shape,new_spacing):
+        """ called by PREPROCESS """
         
         # compute transformation parameters
         new_Origin = self.compute_new_Origin(new_shape,new_spacing)
