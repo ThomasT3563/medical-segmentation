@@ -191,10 +191,13 @@ def display_loading_bar(iteration,length,total_length_bar=30,add_char=None):
     ac_length = round((iteration+1)/length*total_length_bar)
     loading_bar = "["+"="*ac_length+">"+"-"*(total_length_bar-ac_length)+"]"
     
-    if add_char:
-        sys.stdout.write("\r%s/%s %s : %s" % (str(iteration+1),str(length),loading_bar,add_char))
-    else:
-        sys.stdout.write("\r%s/%s %s" % (str(iteration+1),str(length),loading_bar))
+    # add_char deactivated to avoid displaying confidential data
+    sys.stdout.write("\r%s/%s %s" % (str(iteration+1),str(length),loading_bar))
+    
+    #if add_char:
+        #sys.stdout.write("\r%s/%s %s : %s" % (str(iteration+1),str(length),loading_bar,add_char))
+    #else:
+        #sys.stdout.write("\r%s/%s %s" % (str(iteration+1),str(length),loading_bar))
         
     return None
 
