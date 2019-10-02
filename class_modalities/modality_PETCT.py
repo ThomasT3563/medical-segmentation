@@ -69,7 +69,7 @@ class Modality_TRAINING_PET_CT(object):
 
             if resample:
                 self.PREPROCESS_resample_CT_to_TEP()
-                self.PREPROCESS_resample_TEPCT_to_CNN(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
+                #self.PREPROCESS_resample_TEPCT_to_CNN(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
 
             # save preprocess data
             new_PET_id = path_output+'/'+splitext(basename(data_set_id[0]))[0]+'.nii'
@@ -624,7 +624,7 @@ class Modality_PREDICTION_PET_CT(object):
 
             if resample:
                 self.PREPROCESS_resample_CT_to_TEP()
-                self.PREPROCESS_resample_TEPCT_to_CNN(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
+                #self.PREPROCESS_resample_TEPCT_to_CNN(output_shape[::-1],pixel_size[::-1]) #reorder to [x,y,z]
 
             # save preprocess data
             new_PET_id = path_output+'/'+splitext(basename(self.PET_id))[0]+'.nii'
