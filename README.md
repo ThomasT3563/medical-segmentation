@@ -12,11 +12,11 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
 [2]	F. Milletari, N. Navab, and S.-A. Ahmadi, ‘V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation’, arXiv:1606.04797 [cs], Jun. 2016.
 
 ### Application & Results
-1) Tissue segmentation of CT scan in 5 classes: ```Background / Fat / Soft tissues / Lungs / Bones```.
+- Tissue segmentation of ####CT scan in 5 classes: ```Background / Fat / Soft tissues / Lungs / Bones```.
 
-2) Physiologic segmentation of IRM in 9 classes: ```N/A / Spleen / Liver / 6 lymphatic nodes```.
+- Physiologic segmentation of IRM in 9 classes: ```N/A / Spleen / Liver / 6 lymphatic nodes```.
 
-3) Tumour segmentation of PET and PET/CT scan.
+- Tumour segmentation of PET and PET/CT scan.
 
 
 <p align="center">
