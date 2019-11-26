@@ -11,7 +11,7 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
 
 [2]	F. Milletari, N. Navab, and S.-A. Ahmadi, ‘V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation’, arXiv:1606.04797 [cs], Jun. 2016.
 
-### Application & Results
+### Applications & Results
 - **Tissue segmentation of CT scan** in 5 classes: ```Background / Fat / Soft tissues / Lungs / Bones```.
 
   **results**: no signs of overfitting, visually correct, median DSC > 0.9
@@ -36,3 +36,16 @@ Trained model available: ```/master/deeplearning_models/trained_model_09241142.h
 <p align="center">
 <img style="display: block; margin: auto;" alt="photo" src="./GIF_example_segmentation.gif">
 </p>
+
+### Development progress
+
+#### DONE
+- modality PET-CT available ```/master/class_modalities/modality_PETCT.py```
+
+#### ONGOING
+- fix image shifting between PET and CT
+
+#### TODO
+- add  modality CT
+- add modality IRM
+- add modality PET
