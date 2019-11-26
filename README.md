@@ -14,7 +14,7 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
 ### Application & Results
 - **Tissue segmentation of CT scan** in 5 classes: ```Background / Fat / Soft tissues / Lungs / Bones```.
 
-  results: no signs of overfitting, visually correct, median DSC > 0.9
+  **results**: no signs of overfitting, visually correct, median DSC > 0.9
   
 - **Physiologic segmentation of IRM** in 9 classes: ```N/A / Spleen / Liver / 6 lymphatic nodes```.
 
