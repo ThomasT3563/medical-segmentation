@@ -13,9 +13,13 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
 
 ### Application & Results
 - Tissue segmentation of **CT scan** in 5 classes: ```Background / Fat / Soft tissues / Lungs / Bones```.
+
   results: median DSC = 0.907 (0.903±0.028)
+  
 - Physiologic segmentation of **IRM** in 9 classes: ```N/A / Spleen / Liver / 6 lymphatic nodes```.
+
   results: median DSC = 0.350 (0.341±0.030)
+  
 - Tumour segmentation of **PET** scan.
 
 - Tumour segmentation of **PET/CT** scan.
