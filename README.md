@@ -7,8 +7,7 @@ This provides some deep Learning tools for automatic segmentation of medical ima
 ### Model
 The model used during this project is a custom U-Net [1], adapted to handle 3D medical images, reduce overfitting and limit the RAM comsumption. The model V-Net [2] is also implemented but couldn't be used, as it is more elaborate and requires more RAM, which wasn't possible.
 
-[1]: O. Ronneberger, P. Fischer, and T. Brox, ‘U-Net: Convolutional Networks for Biomedical Image Segmentation’, arXiv:1505.04597 [cs], May 2015.
-
+[1] O. Ronneberger, P. Fischer, and T. Brox, ‘U-Net: Convolutional Networks for Biomedical Image Segmentation’, arXiv:1505.04597 [cs], May 2015.
 [2]	F. Milletari, N. Navab, and S.-A. Ahmadi, ‘V-Net: Fully Convolutional Neural Networks for Volumetric Medical Image Segmentation’, arXiv:1606.04797 [cs], Jun. 2016.
 
 
