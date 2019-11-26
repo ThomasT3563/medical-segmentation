@@ -29,9 +29,9 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
   **results**: no signs of overfitting, visually correct, median DSC > 0.74
   
 
-### Segmentation of Tumour on PET/CT scan
+### Segmentation of tumour on PET/CT scan
 
-
+Trained model available: ```/master/deeplearning_models/trained_model_09241142.h5```
 
 <p align="center">
 <img style="display: block; margin: auto;" alt="photo" src="./GIF_example_segmentation.gif">
