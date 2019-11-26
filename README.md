@@ -18,18 +18,21 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
   
 - Physiologic segmentation of **IRM** in 9 classes: ```N/A / Spleen / Liver / 6 lymphatic nodes```.
 
-  results: signs of overfitting, visually correct on Liver and Spleen, wrong for lymphatic nodes, median DSC < 0.4
+  **results**: signs of overfitting, visually correct on Liver and Spleen, wrong for lymphatic nodes, median DSC < 0.4
   
 - Tumour segmentation of **PET** scan.
 
-  results: signs of slight overfitting, visually acceptable, median DSC > 0.65
+  **results**: signs of slight overfitting, visually acceptable, median DSC > 0.65
 
 - Tumour segmentation of **PET/CT** scan.
 
-  results: no signs of overfitting, visually correct, median DSC > 0.74
+  **results**: no signs of overfitting, visually correct, median DSC > 0.74
   
 
-### Visualisation of segmentation of Tumour on PET/CT scan
+### Segmentation of Tumour on PET/CT scan
+
+
+
 <p align="center">
 <img style="display: block; margin: auto;" alt="photo" src="./GIF_example_segmentation.gif">
 </p>
