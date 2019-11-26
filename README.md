@@ -14,17 +14,22 @@ The model used during this project is a custom U-Net [1], adapted to handle 3D m
 ### Application & Results
 - Tissue segmentation of **CT scan** in 5 classes: ```Background / Fat / Soft tissues / Lungs / Bones```.
 
-  results: median DSC = 0.907 (0.903±0.028)
+  results: no signs of overfitting, visually correct, median DSC > 0.9
   
 - Physiologic segmentation of **IRM** in 9 classes: ```N/A / Spleen / Liver / 6 lymphatic nodes```.
 
-  results: median DSC = 0.350 (0.341±0.030)
+  results: signs of overfitting, visually correct on Liver and Spleen, wrong for lymphatic nodes, median DSC < 0.4
   
 - Tumour segmentation of **PET** scan.
 
+  results: signs of slight overfitting, visually acceptable, median DSC > 0.65
+
 - Tumour segmentation of **PET/CT** scan.
 
+  results: no signs of overfitting, visually correct, median DSC > 0.74
+  
 
+### Visualisation of segmentation of Tumour on PET/CT scan
 <p align="center">
 <img style="display: block; margin: auto;" alt="photo" src="./GIF_example_segmentation.gif">
 </p>
